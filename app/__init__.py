@@ -1,8 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import config_options
+from flask_bootstrap import Bootstrap
 
 db = SQLAlchemy()
+bootstrap = Bootstrap()
 
 
 def create_app(config_name):
@@ -18,6 +20,7 @@ def create_app(config_name):
 
     #Initializing flask extensions
     db.init_app(app)
+    bootstrap.init_app(app)
 
 
     return app
