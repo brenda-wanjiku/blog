@@ -1,8 +1,20 @@
-{% extends base.html %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/navbar.css')}}" type="text/css">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+            </ul>
 
-{% block styles%}
-{{super()}}
-{% endblock %}
 
-{% block content %}
-{%endblock%}
+        </div>
+    </div>
+</div>
