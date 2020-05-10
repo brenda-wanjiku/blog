@@ -1,5 +1,5 @@
 from ..models import User,Role,Blog,Comment,Quote
-from .forms import AddBlog
+from .forms import AddBlog, SubscriberForm
 from .. import db
 from . import main
 from flask import render_template, redirect, url_for,flash
@@ -8,10 +8,18 @@ from flask_login import login_required, current_user
 
 @main.route('/')
 def index():
-    title = "HOMEPAGE"
+    title = "Bloggerly"
     blog = Blog.display_blogs()
     quotes = get_quotes()
-    return render_template('index.html', title = title, blog = blog, quotes = quotes )
+    subscriber_form = SubscriberForm()
+    if subscriber_form.validate_on_submit():
+        subscriber_email = subscriber_form.email.data
+        new_subscriber = Subscriber(email = subscriber_email)
+        new_subscriber.save_subscriber()
+        mail_message("Welcome to 'Bloggerly'"/"email/welcome_user", new_subscriber.email )
+        return render_template(url_for('main.index', id = id))
+
+    return render_template('index.html', title = title, blog = blog, quotes = quotes,subscriber_form = subscriber_form)
 
 
 @main.route('/user/<user_id>')

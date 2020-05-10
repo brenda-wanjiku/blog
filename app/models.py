@@ -97,6 +97,20 @@ class Comment(db.Model):
     def __repr__(self):
         return f'Comment {self.content}'
 
+class Subscriber(db.Model):
+    __tablename__ = 'subscribers'
+    id = db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(255),index = True)
+
+    def save_subscriber(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    @classmethod
+    def get_subscribers(cls):
+        return Subscriber.query.all()
+
+
 
 class Quote:
     def __init__(self, id, author, quote):
