@@ -5,13 +5,24 @@
 {% endblock%}
 
 {%block content%}
+<div class="container">
+
+
+
 {% if blogs%}
 {% for blog in blogs %}
+
+
 <div class = "container">
     <h1>{{title}}</h1>
     <h1> {{blog.title}}</h1>
+    <h2> {{ blog.description}}</h2>
 </div>
 {% endfor%}
-{% endif %}
+
+
+<a href=""><button class= "btn btn-info">Add a blog</button>
+    {% endif %}
+</div>
 
 {% endblock %}
