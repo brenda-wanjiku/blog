@@ -12,14 +12,15 @@ class QuoteTest(unittest.TestCase):
         """
         self.new_quote = Quote(3,"Bananas", "Overripe bananas make banana bread")
 
-        def test_instance(self):
-            self.assertTrue(isinstance(self.quote,Quote))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_quote,Quote))
 
-        def test_correct_quote_init(self):
-            """
-            Test that confirms object is instantiated correctly
-            """
-
-        self.assertEqual(self.new_quote.id, "id")
+    def test_correct_quote_init(self):
+        """
+        Test that confirms object is instantiated correctly
+        """
+        self.assertEqual(self.new_quote.id, 3)
         self.assertEqual(self.new_quote.author, "Bananas")
         self.assertEqual(self.new_quote.quote, "Overripe bananas make banana bread")
+
+    
