@@ -12,10 +12,12 @@ class User(UserMixin,db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     blog = db.relationship('Blog', backref='user', lazy='dynamic')
+    comments = db.relationship('Comment', backref = 'user', lazy='dynamic')
 
     def save_user(self):
         db.session.add(self)
         db.session.commit()
+
 
     @property 
     def password(self):
@@ -37,6 +39,8 @@ class User(UserMixin,db.Model):
         return f'User {self.username}'
 
 
+
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key = True)
@@ -48,16 +52,20 @@ class Role(db.Model):
         return f'Role : {self.name}'
 
 
+
+
 class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String)
     description = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comment = db.relationship('Comment', backref="blog", lazy ='dynamic')
 
     def save_blog(self):
         db.session.add(self)
         db.session.commit()
+
 
     @classmethod
     def display_blogs(cls):
@@ -72,6 +80,19 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key = True)
     content = db.Column(db.String)
+    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = Comment.query.filter_by(blog_id = id)
+        return comments
+
 
     def __repr__(self):
         return f'Comment {self.content}'
