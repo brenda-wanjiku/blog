@@ -1,14 +1,15 @@
-from ..models import User,Role,Blog,Comment
+from ..models import User,Role,Blog,Comment,Quote
 from .. import db
 from . import main
 from flask import render_template
-
+from ..requests import get_quotes
 
 @main.route('/')
 def index():
     title = "HOMEPAGE"
-    blog1 = Blog.get_blog('1')
-    return render_template('index.html', title = title, blog1 = blog1 )
+    blog = Blog.display_blogs()
+    quotes = get_quotes()
+    return render_template('index.html', title = title, blog = blog, quotes = quotes )
 
 @main.route('/blog/<blog_id>')
 def blog(blog_id):
