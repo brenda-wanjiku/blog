@@ -1,5 +1,5 @@
 from . import db
-from werkzeug import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -20,7 +20,7 @@ class User(db.Model):
         self.pass_code = generate_password_hash(password)
 
     def verify_password(self,password):
-        returm check_password_hash(pass_code,password)
+        return check_password_hash(pass_code,password)
 
     def __repr__(self):
         return f'User {self.username}'
