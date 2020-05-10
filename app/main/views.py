@@ -1,8 +1,9 @@
 from ..models import User,Role,Blog,Comment,Quote
 from .. import db
 from . import main
-from flask import render_template
+from flask import render_template, redirect, url_for,flash
 from ..requests import get_quotes
+from flask_login import login_required, current_user
 
 @main.route('/')
 def index():
