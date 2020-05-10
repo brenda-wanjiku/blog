@@ -1,14 +1,26 @@
 from . import db
-
+from werkzeug import generate_password_hash,check_password_hash
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String)
     email = db.Column(db.String)
+    pass_code = db.Column(db.String)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     blog = db.relationship('Blog', backref='user', lazy='dynamic')
+
+    @property 
+    def password(self):
+        raise AttributeError('You cannot read password')
+
+    @password.setter
+    def password(self,password):
+        self.pass_code = generate_password_hash(password)
+
+    def verify_password(self,password):
+        returm check_password_hash(pass_code,password)
 
     def __repr__(self):
         return f'User {self.username}'
