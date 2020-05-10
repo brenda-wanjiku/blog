@@ -13,6 +13,15 @@ def index():
     quotes = get_quotes()
     return render_template('index.html', title = title, blog = blog, quotes = quotes )
 
+
+@main.route('/user/<user_id>')
+@login_required 
+def profile(user_id):
+    user = User.query.filter_by(id = user_id).first()
+    blogs = Blog.query.filter_by(user_id = user.id).all()
+    title = user.username.upper()
+    return render_template('profile.html')
+
 @main.route('/blog/<blog_id>')
 def blog(blog_id):
     title = "Blogs"
