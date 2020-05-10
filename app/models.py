@@ -32,10 +32,14 @@ class Blog(db.Model):
     description = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def get_blog(blog_id):
-        blogs = Blog.query.filter_by(id = blog_id).all()
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
 
-    
+    @classmethod
+    def display_blogs(cls):
+        blogs = Blog.query.all()
+        return blogs
 
     def __repr__(self):
         return f'Blog {self.title}'
