@@ -1,4 +1,4 @@
-export SECRET_KEY = 'brenda_wanjiku'
+export SECRET_KEY='brenda_wanjiku'
 export MAIL_USERNAME='brendawanjiku123@gmail.com'
-export MAIL_PASSWORD='brend@123'
+export MAIL_PASSWORD='yqpdrnhfmbpduhjb'
 python manage.py server 

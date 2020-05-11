@@ -46,4 +46,4 @@ def login():
 def logout():
     logout_user()
     flash('Successful Log out')
-    return render_template('index.html')
+    return redirect(url_for('main.index'))
