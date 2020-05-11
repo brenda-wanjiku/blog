@@ -6,7 +6,7 @@ A flask-based application that allowd personal blogging where one can create and
 # By https://github.com/brenda-wanjiku/pitch
 
 # Setup/Installation Requirements
-# Prerequisites
+# Pre-requisites
 * python3.8
 * pip
 * Virtual environment(virtualenv)
@@ -16,7 +16,7 @@ A flask-based application that allowd personal blogging where one can create and
 # Cloning and running
 * Clone the application using git clone(this copies the app onto your device). In your   terminal:
 
-$ git clone https://github.com/brenda-wanjiku/pitch/
+$ git clone https://github.com/brenda-wanjiku/blog
 
 $ cd pitch
 
@@ -57,7 +57,7 @@ $ python3.8 manage.py test
 | Enable user write a blog | Click 'new blog' | written user blog |
 
 #Live Site
-*Can be accessed here https://pitch-brenda.herokuapp.com/
+*Can be accessed here https://brenda-bluebird.herokuapp.com/
 
 # Author's Contact
 If you need any clarifications or have feedback on this project , contact the author at brendawanjiku@gmail.com
