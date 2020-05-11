@@ -13,6 +13,9 @@
     <div class="row">
         <div class="col-md-12">
         <p>Bio: {{current_user.bio}}</p>
+        <div class="col-md-12">
+            <a href="{{url_for('main.update_profile',user_id = current_user.id)}}"><button class='btn btn-danger btn-lg'>Update profile </button></a>        
+            </div>
         </div>
     <h1></h1>
 </div>

@@ -52,6 +52,19 @@ def update_profile(user_id):
         return redirect(url_for('main.profile', user_id = user.id))
     return render_template('update.html', form = form, title = title)
 
+@main.route('/user/<user_id>/update/pic', methods = ['POST'])
+@login_required
+def update_pic(user_id):
+    title = "Edit Profile"
+    user = User.query.filter_by(id = user_id).first()
+    
+    if "profile_pic" in request.files:
+        filename = photos.save(request.files["profile_pic"])
+        file_path = f"photos/{filename}"
+        user.profile_pic = file_path
+        db.session.commit()
+    return redirect(url_for('main.profile', user_id = user_id))
+
 
 @main.route('/blog/<blog_id>')
 def blog(blog_id):

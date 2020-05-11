@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
 
+
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
