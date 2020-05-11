@@ -1,17 +1,26 @@
-from ..models import User,Role,Blog,Comment,Quote
+from ..models import User,Role,Blog,Comment,Quote, Subscriber
 from .forms import AddBlog, SubscriberForm
 from .. import db
 from . import main
 from flask import render_template, redirect, url_for,flash
 from ..requests import get_quotes
 from flask_login import login_required, current_user
+from datetime import datetime
 
 @main.route('/')
 def index():
     title = "This is Ines"
     blogs = Blog.display_blogs()
     quotes = get_quotes()
-    return render_template('index.html',title = title, blogs = blogs,quotes = quotes)
+    subscriber_form = SubscriberForm()
+    if subscriber_form.validate_on_submit():
+        subscriber_email = subscriber_form.email.data
+        new_subscriber = Subscriber(email = subscriber_email)
+        new_subscriber.save_subscriber()
+        mail_message("Welcome to Blog", "email/welcome_user", new_subscriber.email)
+        return redirect(url_for('main.index'))
+
+    return render_template('index.html',title = title, blogs = blogs,quotes = quotes, subscriber_form = subscriber_form)
 
 
 @main.route('/user/<user_id>')
@@ -57,12 +66,12 @@ def add_blog(user_id):
     if form.validate_on_submit():
         title = form.title.data
         description = form.description.data
-        new_blog = Blog( title = title, description = description, posted = posted)
+        new_blog = Blog( title = title, description = description)
         new_blog.save_blog()
 
         title = "New Blog"
         blogs = Blog.query.all()
-        return redirect(url_for('main.blog', title = title))
+        return redirect(url_for('main.blog', title = title, blog_id = new_blog.id))
     return render_template('new_blog.html', form = form, title =title)
 
 @main.route('/blog/<blog_id>/delete_blog')
