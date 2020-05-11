@@ -65,7 +65,15 @@ def add_blog(user_id):
         return redirect(url_for('main.blog', title = title))
     return render_template('new_blog.html', form = form, title =title)
 
+@main.route('/blog/<blog_id>/delete')
+@login_required
+def delete_blog(blog_id):
+    blog = Blog.query.filter_by(id = blog_id).first()
+    db.session.delete(blog)
+    db.session.commit()
 
+    flash('Blog has been successfully deleted')
+    return redirect(url_for(main.index))
 
 
 
