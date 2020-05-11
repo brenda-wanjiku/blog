@@ -2,7 +2,6 @@ import os
 
 
 class Config:
- 
     SECRET_KEY = 'brenda_wanjiku'
     #email configs
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
