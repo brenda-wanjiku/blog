@@ -8,9 +8,6 @@ from flask_login import login_required, current_user
 
 @main.route('/')
 def index():
-    title = "Bloggerly"
-    blog = Blog.display_blogs()
-    quotes = get_quotes()
     subscriber_form = SubscriberForm()
     if subscriber_form.validate_on_submit():
         subscriber_email = subscriber_form.email.data
@@ -18,8 +15,10 @@ def index():
         new_subscriber.save_subscriber()
         mail_message("Welcome to 'Bloggerly'"/"email/welcome_user", new_subscriber.email )
         return render_template(url_for('main.index', id = id))
-
-    return render_template('index.html', title = title, blog = blog, quotes = quotes,subscriber_form = subscriber_form)
+    title = "Bloggerly"
+    blog = Blog.display_blogs()
+    quotes = get_quotes()
+    return render_template('index.html',subscriber_form = subscriber_form ,title = title, blog = blog,quotes = quotes)
 
 
 @main.route('/user/<user_id>')
@@ -28,7 +27,7 @@ def profile(user_id):
     user = User.query.filter_by(id = user_id).first()
     blogs = Blog.query.filter_by(user_id = user.id).all()
     title = user.username.upper()
-    return render_template('profile.html')
+    return render_template('profile.html', user= user, blogs = blogs, title= title )
 
 @main.route('/blog/<blog_id>')
 def blog(blog_id):
