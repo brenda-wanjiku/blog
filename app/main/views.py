@@ -16,9 +16,9 @@ def index():
         mail_message("Welcome to 'Bloggerly'"/"email/welcome_user", new_subscriber.email )
         return render_template(url_for('main.index', id = id))
     title = "Bloggerly"
-    blog = Blog.display_blogs()
+    blogs = Blog.display_blogs()
     quotes = get_quotes()
-    return render_template('index.html',subscriber_form = subscriber_form ,title = title, blog = blog,quotes = quotes)
+    return render_template('index.html',subscriber_form = subscriber_form ,title = title, blogs = blogs,quotes = quotes)
 
 
 @main.route('/user/<user_id>')

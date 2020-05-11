@@ -9,7 +9,13 @@
 {% block content%}
 <h1 class="text-center">{{title}}</h1>
 <div class="row text-center">
-    <a href="{{url_for('main.blog' ,blog_id = 1)}}"><button type="button">Blogs</button> </a>
+    {% if blogs%}
+    {% for blog in blogs%}
+    <h2>{{blog.title}}</h2>
+    <h2>{{blog.description}}</h2>
+    <a href="{{url_for('main.blog' ,blog_id = blog.id)}}"><button type="button">Blogs</button> </a>
+    {% endfor%}
+    {% endif%}
 </div>
 <div class="quote">
 <h2 class="text-center" >{{quotes.author}}</h2>
