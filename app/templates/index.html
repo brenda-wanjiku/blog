@@ -13,7 +13,7 @@
 <h1 class="text-center"><span style="font-size: 140px;font-family: 'Sacramento', cursive;">Blue</span>bird</h1>
 <h3 class="text-center"> A lifestyle blog</h3>
 <div class="text-center">
-    <img src="https://images.unsplash.com/photo-1569851409587-7e3a27cbfe1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+    <img src="https://images.unsplash.com/photo-1569851409587-7e3a27cbfe1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="responsive">
     <div class="quote jumbotron">
         <h1>Mantra</h1>
         <hr>
@@ -29,8 +29,7 @@
             <a href="{{url_for('main.blog' ,blog_id = blog.id)}}"><img src="https://images.unsplash.com/photo-1587313512268-a3b47aa30166?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="blog-img"></a> 
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{url_for('main.blog' ,blog_id = blog.id)}}">{{blog.title}}</a></h5>
-                        <p class="card-text">{{blog.description}}</p>
-                        <p>{{blog.posted}}</p>
+                        <p>{{blog.posted.strftime('%Y - %m - %d')}}</p>
                     </div>
             </div>
         </div>

@@ -11,15 +11,15 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/"><span style="color: black; font-family: 'Cabin', sans-serif;">Home</span></a></li>
+                <li><a href="/">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated%}
-                <li><a href="{{url_for('main.add_blog', user_id = current_user.id)}}"><span style="color: black; font-family: 'Cabin', sans-serif;">New Post</span></a></li>
-                <li><a href = "{{url_for('main.profile', user_id = current_user.id)}}"><span style="color: black;font-family: 'Cabin', sans-serif;">My account</span></a></li>
-                <li> <a href="{{url_for('auth.logout')}}"><span style="color: black;font-family: 'Cabin', sans-serif;">Sign out</span></a> </li>
+                <li><a href="{{url_for('main.add_blog', user_id = current_user.id)}}">New Post</a></li>
+                <li><a href = "{{url_for('main.profile', user_id = current_user.id)}}">My account</span></a></li>
+                <li> <a href="{{url_for('auth.logout')}}">Sign out</a> </li>
                 {% else %}
-                <li><a href ="{{url_for('auth.login')}}"><span style="color: black;font-family: 'Cabin', sans-serif;">Sign in</span></a></li>
+                <li><a href ="{{url_for('auth.login')}}">Sign in</a></li>
                 {% endif %}
             </ul>
 

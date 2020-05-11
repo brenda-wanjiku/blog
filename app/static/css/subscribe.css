@@ -1,0 +1,11 @@
+body{
+    font-family: 'Cormorant', serif;
+    font-size: 30px;
+}
+h6{
+    font-size: 30px;
+    font-family: 'Cormorant', serif;
+}
+.submit{
+    background-color: white;
+}
