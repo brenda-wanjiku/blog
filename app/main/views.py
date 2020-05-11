@@ -8,7 +8,7 @@ from flask_login import login_required, current_user
 
 @main.route('/')
 def index():
-    title = "Bloggerly"
+    title = "This is Ines"
     blogs = Blog.display_blogs()
     quotes = get_quotes()
     return render_template('index.html',title = title, blogs = blogs,quotes = quotes)
