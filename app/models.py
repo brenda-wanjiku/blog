@@ -8,6 +8,8 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String)
     email = db.Column(db.String)
+    bio = db.Column(db.String)
+    profile_pic = db.Column(db.String)
     pass_code = db.Column(db.String)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 

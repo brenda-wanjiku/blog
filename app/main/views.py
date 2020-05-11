@@ -29,6 +29,8 @@ def profile(user_id):
     title = user.username.upper()
     return render_template('profile.html', user= user, blogs = blogs, title= title )
 
+
+
 @main.route('/blog/<blog_id>')
 def blog(blog_id):
     title = "Blogs"
