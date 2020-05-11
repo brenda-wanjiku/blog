@@ -29,6 +29,22 @@ def profile(user_id):
     title = user.username.upper()
     return render_template('profile.html', user= user, blogs = blogs, title= title )
 
+@main.route('/user/<user_id>/update', methods = ["GET", "POST"])
+@login_required
+def update_profile(user_id):
+    title = "Edit Profile"
+    user = User.query.filter_by(id = user_id).first()
+    if user is None:
+        abort(404)
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('main.profile', user_id = user.id))
+    return render_template('update.html', form = form, title = title)
+
 
 
 @main.route('/blog/<blog_id>')

@@ -10,3 +10,7 @@ class AddBlog(FlaskForm):
 class SubscriberForm(FlaskForm):
     email = StringField(validators=[Required()],render_kw={"placeholder":"Enter your email.."})
     submit = SubmitField('Submit')
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about yourself', validators=[Required()])
+    submit = SubmitField('Submit')
