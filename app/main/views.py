@@ -57,7 +57,7 @@ def add_blog(user_id):
     if form.validate_on_submit():
         title = form.title.data
         description = form.description.data
-        new_blog = Blog( title = title, description = description)
+        new_blog = Blog( title = title, description = description, posted = posted)
         new_blog.save_blog()
 
         title = "New Blog"
