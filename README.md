@@ -18,7 +18,7 @@ A flask-based application that allowd personal blogging where one can create and
 
 $ git clone https://github.com/brenda-wanjiku/blog
 
-$ cd pitch
+$ cd blog
 
 # Creating the virtual environment
 * Use the following commands in your terminal to create virtual environment
