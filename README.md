@@ -3,7 +3,7 @@
 # Description
 A flask-based application that allowd personal blogging where one can create and share one's opinions and other users can read and comment on them.
 
-# By https://github.com/brenda-wanjiku/pitch
+# By https://github.com/brenda-wanjiku/blog
 
 # Setup/Installation Requirements
 # Pre-requisites
@@ -63,4 +63,4 @@ $ python3.8 manage.py test
 If you need any clarifications or have feedback on this project , contact the author at brendawanjiku@gmail.com
 
 # License
-This software is Licensed under MIT license Copyright (2018) https://raw.githubusercontent.com/brenda-wanjiku/pitch/master/LICENSE
+This software is Licensed under MIT license Copyright (2018) https://raw.githubusercontent.com/brenda-wanjiku/blog/master/LICENSE
