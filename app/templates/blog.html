@@ -26,9 +26,13 @@
    
 
 <!--- Comment section-->
-<h> Comments</h>
+
 {% if comments %}
     {% for comment in comments %}
+    <div class="comments">
+    <h3> <strong>Comments</strong></h3>
+    <hr>
+    <hr>
        <p> {{comment.content}}</p>
     {% endfor %}
     <div class="row">
@@ -39,7 +43,7 @@
   {% else%}
     <h3 class="text-center">This blog has no comments </h3>
     <h3 class="text-center"><a class="btn btn-danger btn-lg" href="{{url_for('main.add_comment',blog_id = blog.id)}}"> Make a new comment</a></h3>
-   
+  </div>
   {% endif %}
  
   

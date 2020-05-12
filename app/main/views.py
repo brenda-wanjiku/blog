@@ -7,11 +7,12 @@ from ..requests import get_quotes
 from flask_login import login_required, current_user
 from datetime import datetime
 from ..email import mail_message
+from sqlalchemy import desc
 
 @main.route('/', methods = ['GET', 'POST'])
 def index():
     title = "Bluebird"
-    blogs = Blog.display_blogs()
+    blogs = Blog.query.order_by(desc(Blog.id)).all()
     quotes = get_quotes()
     subscriber_form = SubscriberForm()
     if subscriber_form.validate_on_submit():
@@ -23,7 +24,9 @@ def index():
 
     return render_template('index.html',title = title, blogs = blogs,quotes = quotes, subscriber_form = subscriber_form)
 
-
+@main.route('/about')
+def about():
+    return render_template('about.html')
 
 @main.route('/user/<user_id>')
 @login_required 
